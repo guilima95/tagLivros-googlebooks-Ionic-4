@@ -1,0 +1,29 @@
+<ion-content>
+
+  <ion-searchbar color="primary" placeholder="Pesquisar Livro" (ionChange)="buscarLivros($event)">
+  </ion-searchbar>
+  <ion-list *ngFor="let item of livros">
+    <ion-item color='transparent'>
+      <ion-thumbnail slot="start" *ngIf="item.volumeInfo.imageLinks">
+        <img src="{{item.volumeInfo.imageLinks?.thumbnail}}">
+      </ion-thumbnail>
+      <ion-label>{{item.volumeInfo.title}}</ion-label>
+
+      <ion-button (click)='add(item)' fill='clear' size='medium'>
+        <ion-icon name="ios-add-circle"></ion-icon>
+      </ion-button>
+      <ion-button (click)='andamento(item)' fill='clear' size='medium'>
+        <ion-icon name='ios-bookmarks'></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button  size='medium'>
+      <ion-icon name="share"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="compartilharWhatsapp()">
+        <ion-icon name="logo-whatsapp"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
